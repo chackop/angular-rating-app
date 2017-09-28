@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
 })
 export class ProductListComponent {
     pageTitle: string = 'Product List';
+    imageWidth: number = 50;
+    imageMargin: number = 2;
+    showImage: boolean = false;
+    errorMessage: string;
+    listFilter: string = 'cart';
+
     products: any[] =
     [
         {
@@ -61,12 +67,6 @@ export class ProductListComponent {
     ];
 
 
-    // imageWidth: number = 50;
-    // imageMargin: number = 2;
-    // showImage: boolean = false;
-    // errorMessage: string;
-
-    // _listFilter: string;
     // get listFilter(): string {
     //     return this._listFilter;
     // }
@@ -92,9 +92,9 @@ export class ProductListComponent {
     //           product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
     // }
 
-    // toggleImage(): void {
-    //     this.showImage = !this.showImage;
-    // }
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    }
 
     // ngOnInit(): void {
     //     this._productService.getProducts()

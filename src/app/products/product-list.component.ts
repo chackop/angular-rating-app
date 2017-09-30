@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IProduct } from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: './product-list.component.html'
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css']   
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -97,12 +98,13 @@ export class ProductListComponent {
         this.showImage = !this.showImage;
     }
 
-    // ngOnInit(): void {
-    //     this._productService.getProducts()
-    //             .subscribe(products => {
-    //                 this.products = products;
-    //                 this.filteredProducts = this.products;
-    //             },
-    //                 error => this.errorMessage = <any>error);
-    // }
+    ngOnInit(): void {
+        console.log('In oninit');
+        // this._productService.getProducts()
+        //         .subscribe(products => {
+        //             this.products = products;
+        //             this.filteredProducts = this.products;
+        //         },
+        //             error => this.errorMessage = <any>error);
+    }
 }

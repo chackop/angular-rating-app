@@ -12,8 +12,9 @@ export class ProductListComponent implements OnInit {
     imageMargin: number = 2;
     showImage: boolean = false;
     errorMessage: string;
-    listFilter: string = 'cart';
-
+    _listFilter: string;
+    filteredProducts: IProduct[];
+    // products: IProduct[] = [];
     products: IProduct[] =
     [
         {
@@ -69,30 +70,28 @@ export class ProductListComponent implements OnInit {
     ];
 
 
-    // get listFilter(): string {
-    //     return this._listFilter;
-    // }
-    // set listFilter(value: string) {
-    //     this._listFilter = value;
-    //     this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
-    // }
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+    }
 
-    // filteredProducts: IProduct[];
-    // products: IProduct[] = [];
-
-    // constructor(private _productService: ProductService) {
-
-    // }
+    constructor() {
+        this.filteredProducts = this.products;
+        this.listFilter = 'cart';
+    }
 
     // onRatingClicked(message: string): void {
     //     this.pageTitle = 'Product List: ' + message;
     // }
 
-    // performFilter(filterBy: string): IProduct[] {
-    //     filterBy = filterBy.toLocaleLowerCase();
-    //     return this.products.filter((product: IProduct) =>
-    //           product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
-    // }
+    performFilter(filterBy: string): IProduct[] {
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: IProduct) =>
+              product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    }
 
     toggleImage(): void {
         this.showImage = !this.showImage;

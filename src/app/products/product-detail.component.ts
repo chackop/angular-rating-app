@@ -16,10 +16,12 @@ export class ProductDetailComponent implements OnInit {
   constructor(private _route: ActivatedRoute,
     private _router: Router,
     private _productService: ProductService) {
+      // console.log(this._route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit() {
-    // const id = +this._route.snapshot.paramMap.get('id');
+    const id = +this._route.snapshot.paramMap.get('id');
+    this.pageTitle += `: ${id}`;
     // this.getProduct(id);
   }
 
@@ -29,8 +31,8 @@ export class ProductDetailComponent implements OnInit {
   //     error => this.errorMessage = <any>error);
   // }
 
-  // onBack(): void {
-  //   this._router.navigate(['/products']);
-  // }
+  onBack(): void {
+    this._router.navigate(['/products']);
+  }
 
 }
